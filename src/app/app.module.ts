@@ -5,11 +5,13 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ListPokemonsComponentComponent } from './list-pokemons-component/list-pokemons-component.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { PokemonSearchPipe } from './pokemon-search.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
-    ListPokemonsComponentComponent
+    ListPokemonsComponentComponent,
+    PokemonSearchPipe
   ],
   imports: [
     BrowserModule,

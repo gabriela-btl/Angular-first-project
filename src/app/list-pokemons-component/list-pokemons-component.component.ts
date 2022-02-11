@@ -15,4 +15,13 @@ export class ListPokemonsComponentComponent implements OnInit {
     this.pokemons=POKEMONS;
   }
 
+  selectPokemon(pokemon: Pokemon) {
+    console.log(pokemon.name);
+  }
+
+  onDelete(id:number) {
+    let index=this.pokemons.findIndex(pokemon=>pokemon.id==id);
+    return this.pokemons.splice(index, 1);
+  }
+
 }
