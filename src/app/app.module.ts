@@ -6,17 +6,22 @@ import { AppComponent } from './app.component';
 import { ListPokemonsComponentComponent } from './list-pokemons-component/list-pokemons-component.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { PokemonSearchPipe } from './pokemon-search.pipe';
+import { FormsModule } from '@angular/forms';
+import { BorderDirectiveDirective } from './border-directive.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     ListPokemonsComponentComponent,
-    PokemonSearchPipe
+    PokemonSearchPipe,
+    BorderDirectiveDirective
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    NgbModule
+    NgbModule,
+    FormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]

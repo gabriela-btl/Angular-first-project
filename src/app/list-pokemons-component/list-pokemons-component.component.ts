@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { POKEMONS } from '../mock-pokemons';
 import { Pokemon } from '../pokemon';
+import { PokemonServiceService } from '../pokemon-service.service';
 
 @Component({
   selector: 'app-list-pokemons-component',
@@ -8,20 +9,25 @@ import { Pokemon } from '../pokemon';
   styleUrls: ['./list-pokemons-component.component.css']
 })
 export class ListPokemonsComponentComponent implements OnInit {
-  pokemons: Pokemon[]=[];
-  constructor() { }
 
-  ngOnInit() {
-    this.pokemons=POKEMONS;
+
+  searchTerm: string = "";
+  pokemons: Pokemon[] = [];
+
+  constructor(public pokemonServiceService: PokemonServiceService) {
+   }
+
+  ngOnInit(): void {
+    this.pokemons = this.pokemonServiceService.getPokemon();
   }
 
   selectPokemon(pokemon: Pokemon) {
-    console.log(pokemon.name);
+    return this.pokemonServiceService.selectPokemon(pokemon);
   }
 
-  onDelete(id:number) {
-    let index=this.pokemons.findIndex(pokemon=>pokemon.id==id);
-    return this.pokemons.splice(index, 1);
+  onDelete(id: number) {
+    this.pokemonServiceService.onDelete(id);
+    this.pokemons = this.pokemonServiceService.getPokemon();
   }
 
 }

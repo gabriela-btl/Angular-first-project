@@ -1,14 +1,16 @@
-<p>Pokemon ^-^ !</p>
+<p>Pokémon ^-^ !</p>
 
+
+<input type="text" [(ngModel)]="searchTerm" name ="searchTerm" placeholder="Search for a pokémon">
 <div class="row">
-    <div *ngFor="let pokemon of pokemons| filter : pokemonSearch" style="margin: 1rem;">
-        <div class="card" style="width: 18rem; margin: 1rem;" (click)="selectPokemon(pokemon)">
+    <div *ngFor="let pokemon of (pokemons | pokemonSearch : searchTerm)" style="margin: 1rem;">
+        <div class="card" style=" margin: 1rem;" (click)="selectPokemon(pokemon)" appBorderCard>
             <img class="card-img-top" src="{{pokemon.picture}}" alt="Card image cap">
             <div class="card-body" style="background-color: rgb(250, 250, 250)">
             <h5 class="card-title">{{pokemon.name | uppercase}}</h5>
             <p class="card-text">{{pokemon.created | date:"dd/MM/yyyy" }}</p>
             <span *ngFor="let type of pokemon.types" class="{{ type }}"> {{type}}</span>
-            <p><input class="btn btn-danger" type="submit" value="Delete me :c qwq D:" style="margin:2rem 2rem 0 0;" (click)="onDelete(pokemon.id)"></p> 
+            <p><input class="btn btn-danger" type="submit" value="Delete me :c" (click)="onDelete(pokemon.id)"></p> 
             </div>
         </div>
 </div>
